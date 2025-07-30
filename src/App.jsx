@@ -988,8 +988,11 @@ const InternshipTracker = () => {
       const startDate = new Date(sprint.startDate);
       const endDate = sprint.endDate ? new Date(sprint.endDate) : null;
       const todayDate = new Date(today);
-      
-      return todayDate >= startDate && (!endDate || todayDate <= endDate);
+      return (
+        sprint.status === 'active' &&
+        todayDate >= startDate &&
+        (!endDate || todayDate <= endDate)
+      );
     });
   };
 
